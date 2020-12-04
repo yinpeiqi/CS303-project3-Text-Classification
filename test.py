@@ -1,5 +1,6 @@
 import argparse
 import json
+
 from joblib import load
 
 if __name__ == "__main__":
@@ -9,9 +10,10 @@ if __name__ == "__main__":
     args = parser.parse_args()
 
     test_data_file_name = args.test_data_file
-    test_data_file = json.load(test_data_file_name)
+    test_data_file = open(test_data_file_name, "r")
+    test_data = json.load(test_data_file)
     X_test = []
-    for line in test_data_file:
+    for line in test_data:
         X_test.append(line)
 
     model_file_name = args.model_file

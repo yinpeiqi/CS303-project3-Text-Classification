@@ -21,8 +21,7 @@ if __name__ == "__main__":
         y.append(line['label'])
 
     text_clf = Pipeline([
-        ('tfidf', TfidfVectorizer(lowercase=False, max_df=0.375, ngram_range=(1,2), sublinear_tf=True)),
-        ('clf', OneVsRestClassifier(LinearSVC(C=1.175, class_weight='balanced')))
-    ])
+        ('tfidf', TfidfVectorizer(lowercase=False, max_df=0.375, ngram_range=(1, 2), sublinear_tf=True)),
+        ('clf', OneVsRestClassifier(LinearSVC(C=1.175, class_weight='balanced')))])
     text_clf = text_clf.fit(X, y)
     dump(text_clf, 'model.pkl')
