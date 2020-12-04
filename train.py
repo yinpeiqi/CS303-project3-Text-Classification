@@ -22,6 +22,6 @@ if __name__ == "__main__":
 
     text_clf = Pipeline([
         ('tfidf', TfidfVectorizer(lowercase=False, max_df=0.375, ngram_range=(1, 2), sublinear_tf=True)),
-        ('clf', OneVsRestClassifier(LinearSVC(C=1.175, class_weight='balanced')))])
+        ('clf', OneVsRestClassifier(LinearSVC(C=1.175, class_weight='balanced', max_iter=500)))])
     text_clf = text_clf.fit(X, y)
     dump(text_clf, 'model.pkl')
